@@ -22,8 +22,10 @@ public class Main extends HttpServlet {
 		//リクエストスコープにインスタンスを保存
 		request.setAttribute("result", result);
 		
+		//フォワード先を指定
 		RequestDispatcher rd = 
 				request.getRequestDispatcher("/WEB-INF/view/result.jsp");
+		//フォワードする内容を記述
 		rd.forward(request, response);
 	}
 }
