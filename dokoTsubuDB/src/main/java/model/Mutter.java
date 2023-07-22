@@ -16,6 +16,10 @@ public class Mutter implements Serializable{
 		this.userName = userName;
 		this.userText = userText;
 	}
+	public Mutter(int id, String text) {
+		this.id = id;
+		this.userText = text;
+	}
 	public int getId() {
 		return id;
 	}

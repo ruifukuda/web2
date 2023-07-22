@@ -1,7 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="model.Mutter"%>
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
-Mutter mutter = (Mutter)request.getAttribute("mutter");
+/*
+User loginUser = (User)session.getAttribute("loginUser");
+Mutter mutter=(Mutter)request.getAttribute("mutter");
+*/
 %>
 <!DOCTYPE html>
 <html>
@@ -10,11 +14,17 @@ Mutter mutter = (Mutter)request.getAttribute("mutter");
 <title>どこつぶ</title>
 </head>
 <body>
-<form action="/dokoTsubuDB/Update" method="post">
-つぶやき:<input type="text" name="text" value="<%=mutter.getUserText() %>"><br>
-<input type="hidden" name="userName" value="<%=mutter.getUserName() %>"><br>
-<input type="hidden" name="id" value="<%=mutter.getId() %>"><br>
-<button type="submit">更新</button>
+<h1>どこつぶメイン</h1>
+<p>
+${loginUser.name}さん、ログイン中
+<a href="Logout">ログアウト</a>
+</p>
+<form action="Update" method="post">
+<input type="text" name="text" value="${mutter.userText}"><br>
+<input type="hidden" name="name" value="${mutter.userName}"><br>
+<input type="hidden" name="id" value="${mutter.id}"><br>
+<input type="submit" value="更新">
 </form>
+<jsp:include page="footer.jsp" />
 </body>
 </html>
